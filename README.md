@@ -56,15 +56,29 @@ EspLuaEngine shines in its ability to adapt to your project's specific needs:
 
 ## 📚 Documentation
 
-For detailed API reference and customization guides, visit our [Wiki](https://github.com/yourusername/EspLuaEngine/wiki).
+For detailed API reference and customization guides, visit our [Wiki](https://github.com/luc-github/EspLuaEngine/wiki).
 
 ## 🤝 Contributing
 
 We welcome contributions! Whether it's adding new features, improving documentation, or reporting issues, your input is valuable.
 
+## 💖Supporters
+
+### 💎Become a sponsor or a supporter
+ * A sponsor is a recurent donator    
+   As my sponsorship is not displayed by github your logo / avatar will be added to the readme page with eventually with a link to your site.    
+ * A supporter is per time donator 
+   To thank you for your support, your logo / avatar will be added to the readme page with eventually with a link to your site.  
+
+ Every support is welcome, indeed helping users / developing new features need time and devices, donations contribute a lot to make things happen, thank you.
+
+* liberapay <a href="https://liberapay.com/ESP3D/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a> 
+* Paypal [<img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="PayPal – The safer, easier way to pay online.">](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FQL59C749A78L)
+* ko-fi [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G0C0QT7)   
+
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the LGPL-3.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
