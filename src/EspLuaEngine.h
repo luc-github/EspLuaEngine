@@ -23,28 +23,26 @@
 #include "lua-5.4.7/src/lua.hpp"
 
 class EspLuaEngine {
-public:
-    EspLuaEngine();
-    ~EspLuaEngine();
+ public:
+  EspLuaEngine();
+  ~EspLuaEngine();
 
-    bool executeScript(const char* script);
-    bool registerFunction(const char* name, lua_CFunction function);
-    
-    // Méthode template pour l'enregistrement de constantes
-    template<typename T>
-    bool registerConstant(const char* name, T value);
+  bool executeScript(const char* script);
+  bool registerFunction(const char* name, lua_CFunction function,
+                        void* userData = nullptr);
+  template <typename T>
+  bool registerConstant(const char* name, T value);
+  lua_State* getLuaState() { return _lua_state; }
 
-private:
-    lua_State* _lua_state;
-    void _loadLibraries();
-    bool _checkPreconditions(const char* name);
-    bool _verifyGlobal(const char* name, int type);
-    void _cleanupOnFailure(const char* name, int top);
-    bool _makeReadOnly(const char* name);
-
-    // Méthodes privées spécialisées pour chaque type de constante
-    bool _registerConstantImpl(const char* name, lua_Number value);
-    bool _registerConstantImpl(const char* name, const char* value);
-    bool _registerConstantImpl(const char* name, bool value);
-    bool _registerConstantImpl(const char* name, int value);
+ private:
+  lua_State* _lua_state;
+  void _loadLibraries();
+  bool _checkPreconditions(const char* name);
+  bool _verifyGlobal(const char* name, int type);
+  void _cleanupOnFailure(const char* name, int top);
+  bool _makeReadOnly(const char* name);
+  bool _registerConstantImpl(const char* name, lua_Number value);
+  bool _registerConstantImpl(const char* name, const char* value);
+  bool _registerConstantImpl(const char* name, bool value);
+  bool _registerConstantImpl(const char* name, int value);
 };
