@@ -20,12 +20,33 @@
 
 #pragma once
 #define LUA_USE_C89
+#include <Arduino.h>
+
+#include <atomic>
+#include <functional>
+
 #include "lua-5.4.7/src/lua.hpp"
+#if defined(ARDUINO_ARCH_ESP32)
+#define ESP_LUA_CHECK_INTERVAL pdMS_TO_TICKS(10)
+#endif  // defined(ARDUINO_ARCH_ESP32)
+
+#if defined(ARDUINO_ARCH_ESP8266)
+#define ESP_LUA_CHECK_INTERVAL 10
+#endif  // defined(ARDUINO_ARCH_ESP8266)
+
+
 
 class EspLuaEngine {
  public:
+  enum class Status {
+    Idle,
+    Running,
+    Paused,
+  };
   EspLuaEngine();
   ~EspLuaEngine();
+
+  using PauseFunction = std::function<void(void)>;
 
   bool executeScript(const char* script);
   bool registerFunction(const char* name, lua_CFunction function,
@@ -33,9 +54,28 @@ class EspLuaEngine {
   template <typename T>
   bool registerConstant(const char* name, T value);
   lua_State* getLuaState() { return _lua_state; }
+  const char* getLastError() { return _lastError.c_str(); }
+  void resetState();
+
+  void setPauseFunction(PauseFunction func);
+
+  static void pauseExecution();
+  static void resumeExecution();
+  static void stopExecution();
+  bool isPaused();
+  bool isRunning();
+  Status getStatus();
+  bool hasError();
 
  private:
   lua_State* _lua_state;
+  static PauseFunction _pauseFunction;
+  static String _lastError;
+  static inline std::atomic<bool> _isPaused{false};
+  static inline std::atomic<bool> _isRunning{false};
+ 
+  static void hookFunction(lua_State* L, lua_Debug* ar);
+  static void _defaultPauseFunction();
   void _loadLibraries();
   bool _checkPreconditions(const char* name);
   bool _verifyGlobal(const char* name, int type);
@@ -46,3 +86,5 @@ class EspLuaEngine {
   bool _registerConstantImpl(const char* name, bool value);
   bool _registerConstantImpl(const char* name, int value);
 };
+
+using EspLuaStatus = EspLuaEngine::Status;
