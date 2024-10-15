@@ -66,13 +66,14 @@ class EspLuaEngine {
   bool isRunning();
   Status getStatus();
   bool hasError();
+  void clearError(){_lastError="";}
 
  private:
   lua_State* _lua_state;
   static PauseFunction _pauseFunction;
   static String _lastError;
-  static inline std::atomic<bool> _isPaused{false};
-  static inline std::atomic<bool> _isRunning{false};
+  static std::atomic<bool> _isPaused;
+  static std::atomic<bool> _isRunning;
  
   static void hookFunction(lua_State* L, lua_Debug* ar);
   static void _defaultPauseFunction();
