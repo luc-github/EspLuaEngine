@@ -1,4 +1,4 @@
-# EspLuaEngine for ESP boards
+# EspLuaEngine for ESP boards ![EspLuaEngine](https://img.shields.io/badge/dynamic/json?label=Version&query=$.devt&color=green&url=https://raw.githubusercontent.com/luc-github/espluaengine/refs/heads/main/info.json)
 
 
 
