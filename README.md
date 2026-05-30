@@ -93,6 +93,16 @@ This project is licensed under the LGPL-3.0 License - see the [LICENSE](LICENSE)
 - Inspired by [ESP8266-Arduino-Lua](https://github.com/fdu/ESP8266-Arduino-Lua)
 - Built on the robust foundation of [Lua 5.4.7](https://www.lua.org/)
 
+### ☾ Lua Credits
+
+This project uses [Lua 5.4.7](https://www.lua.org/), developed by the team at [PUC-Rio](https://www.puc-rio.br/).
+
+<a href="https://www.lua.org/"><img src="luaa.gif" alt="Lua Logo" width="100"></a>
+
+> Copyright © 1994–2025 Lua.org, PUC-Rio.
+>
+> Lua is free software distributed under the terms of the MIT license. The only requirement is that if you use Lua, you should give credit by including the appropriate copyright notice somewhere in your product or its documentation.
+
 ---
 
 Elevate your ESP32 projects with the flexibility of EspLuaEngine! 🚀✨
